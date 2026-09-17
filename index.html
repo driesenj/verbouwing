@@ -68,16 +68,20 @@
 
         <div class="facts">
           <div class="card fact">
-            <h3>Gyproc, stuc, drogen, verf — in die volgorde</h3>
-            <p>In de slaapkamers moet er waar nodig eerst gyproc tegen de muur, dan stucwerk. Nieuw pleisterwerk heeft twee tot vier weken nodig om te drogen voor er verf op kan — in de herfst eerder vier dan twee. Stukadoren en schilderen in dezelfde week lukt dus niet, ook niet met vakmensen.</p>
+            <h3>Plafonds: eruit, gyproc, stuc, drogen, verf</h3>
+            <p>Bijna elk plafond in het huis moet eraan geloven: beneden en in de badkamer de houten latjes eruit en een nieuw plafond, boven gyproc over de OSB. Daarna pleisteren. Nieuw pleisterwerk heeft twee tot vier weken nodig om te drogen voor er verf op kan — in de herfst eerder vier dan twee. Stukadoren en schilderen in dezelfde week lukt dus niet, ook niet met vakmensen.</p>
           </div>
           <div class="card fact">
             <h3>Verf ook</h3>
             <p>Primer, twee lagen, en tussenin drogen. Een kamer schilderen is minstens twee dagen, hoeveel handen er ook zijn. Meer mensen betekent meer kamers tegelijk, niet snellere kamers.</p>
           </div>
           <div class="card fact">
+            <h3>De badkamer is een ketting</h3>
+            <p>Eerst de loodgieter, voor de wasmachine, het toilet en de douchebak. Dan de vloer dicht. Dan waterdichting, tegels, douchewand, kit. Elke stap wacht op de vorige, en tussen een paar zit droogtijd. Wie de douche vernieuwt, zit een paar weken zonder: dat plan je vóór de intrek, of in twee keer erna.</p>
+          </div>
+          <div class="card fact">
             <h3>De kalender</h3>
-            <p>Jullie krijgen de sleutel pas een paar dagen voor de herfstvakantie. <span id="countdown"></span> Een voorsprong nemen kan dus niet: de vakantieweek is voor gyproc en stucwerk, de slaapkamers schilderen komt pas in december. Wie een stukadoor wil voor die week, boekt nu.</p>
+            <p>Jullie krijgen de sleutel pas een paar dagen voor de herfstvakantie. <span id="countdown"></span> Een voorsprong nemen kan dus niet: de vakantieweek is voor gyproc en stucwerk, verven komt pas in december. Wie een stukadoor wil voor die week, boekt nu. Een voordeur op maat heeft zes tot tien weken levertijd, en voor de veluxen is de plaatser de flessenhals: wie die vóór de winter wil, belt ook nu.</p>
           </div>
         </div>
       </div>
@@ -88,25 +92,16 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Waar staat het huis?</h2>
-        <p>Vijf kamers, drie soorten werk. Dat verschil bepaalt waar de handen eerst naartoe gaan.</p>
+        <p>Negen ruimtes, <span id="task-count"></span> klussen. Boven is bijna alles nog OSB — vloeren én plafonds — en beneden hangen er latjesplafonds. De badkamer is een project apart. Alleen de keuken en de trap zijn af. Per klus: hoeveel dagen het kost om het zelf te doen, en wat het kost om het te laten doen.</p>
       </div>
-      <div class="rooms-grid">
-        <div class="card room-group">
-          <p class="kicker">Nog niet af</p>
-          <h3>De drie slaapkamers</h3>
-          <p>De muren moeten nog gestuct worden, en op sommige plekken moet er eerst gyproc tegen. Zonder stucwerk geen verf, zonder verf geen slaapkamer. Dit is het echte werk, en het enige waar een vakman echt het verschil maakt.</p>
-        </div>
-        <div class="card room-group">
-          <p class="kicker">Af, maar niet naar wens</p>
-          <h3>Living &amp; inkom</h3>
-          <p>Alles werkt en is heel. Hier gaat het over smaak: kleur, licht, sfeer. Verf doet het meeste werk — en verf kan altijd nog.</p>
-        </div>
-        <div class="card room-group">
-          <p class="kicker">Af en bruikbaar</p>
-          <h3>Keuken &amp; badkamer</h3>
-          <p>Werken prima. Eerst een grondige poetsbeurt — die doet meer dan je denkt — en dan pas beslissen of er nog iets moet.</p>
-        </div>
+      <div class="card list">
+        <table class="tasks" id="tasks">
+          <thead><tr><th>Klus</th><th>Zelf</th><th>Laten doen</th></tr></thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
       </div>
+      <p class="list-legend"><b>Zelf</b>: dagen met twee, zonder droogtijd of wachten op een vakman, plus het materiaal. <b>Laten doen</b>: richtprijzen 2026 voor standaardmateriaal, geen offertes — parket, maatwerk of een stalen deur op maat kosten meer — en de werkdagen van de vakman. <b>Minimum</b> per kamer: alles zelf, een vakman alleen voor wat niet anders kan. <b>Maximum</b>: alles laten doen. <b>Moet</b> is wat nodig is om erin te wonen, <b>willen</b> is wat ze graag hebben, <b>nice to have</b> is wat mag wegvallen.</p>
     </div>
   </section>
 
@@ -114,7 +109,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Zet jullie pin</h2>
-        <p>Vier hoeken, één pin. Sleep hem naar wat het zwaarst weegt. Een zijde geeft twee wensen helemaal, het midden van alles een beetje.</p>
+        <p>Vier hoeken, één pin. Sleep hem naar wat het zwaarst weegt. Een zijde geeft twee wensen helemaal, het midden van alles een beetje. Per kamer zie je welke klussen van de lijst overblijven.</p>
       </div>
 
       <div class="field-grid">
@@ -167,8 +162,17 @@
         <p class="tagline" id="zone-tagline"></p>
         <p class="hint" id="zone-hint" hidden>Jullie pin zit in een hoek: één wens helemaal, de andere nauwelijks. Schuif naar een zijde, dan krijg je er twee.</p>
         <dl class="stats" id="stats"></dl>
-        <h4>Per kamer</h4>
+        <div class="plan-head">
+          <h4>Per kamer</h4>
+          <ul class="legend" aria-label="Legende">
+            <li><span class="chip doen zelf">doen, zelf</span></li>
+            <li><span class="chip doen vakman">doen<i>vakman</i></span></li>
+            <li><span class="chip later">later</span></li>
+            <li><span class="chip niet">valt weg</span></li>
+          </ul>
+        </div>
         <ul class="plan" id="plan"></ul>
+        <p class="tally" id="tally"></p>
         <p class="note" id="zone-note"></p>
       </div>
     </div>

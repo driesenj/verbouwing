@@ -11,6 +11,7 @@
   --terra: #c65f3c;
   --terra-soft: #f7e4da;
   --sand: #d8c7a3;
+  --sand-soft: #f0e8d4;
   --radius: 18px;
   --radius-s: 10px;
   --shadow: 0 1px 2px rgba(31, 28, 24, .05), 0 10px 30px -14px rgba(31, 28, 24, .22);
@@ -110,11 +111,43 @@ a { color: inherit; }
 .fact h3 { font-size: 1.25rem; }
 .fact p { margin-top: 8px; color: var(--ink-2); font-size: .95rem; }
 
-/* ── Kamers ───────────────────────────────────────────── */
-.rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.room-group { padding: 24px; }
-.room-group h3 { margin-top: 10px; }
-.room-group p:last-child { margin-top: 10px; color: var(--ink-2); font-size: .95rem; }
+/* ── De lijst ─────────────────────────────────────────── */
+.list { padding: 6px 24px 10px; }
+.tasks { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.tasks th, .tasks td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-top: 1px solid var(--line); }
+.tasks thead th { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); border-top: 0; padding: 14px 12px 6px 0; }
+.tasks th:last-child, .tasks td:last-child { text-align: right; padding-right: 0; white-space: nowrap; }
+.tasks td:nth-child(2) { white-space: nowrap; width: 24%; }
+.tasks td:last-child { width: 20%; }
+.tasks td b { font-weight: 500; }
+.tasks td small, .tasks tfoot small { display: block; color: var(--ink-3); font-size: .78rem; margin-top: 2px; font-weight: 400; white-space: normal; }
+.tasks tr.room th { padding: 26px 0 8px; border-top: 0; text-align: left; }
+.tasks tr.room .kicker { display: block; margin-bottom: 3px; }
+.tasks tr.room b { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.15; }
+.tasks tr.room small { display: block; color: var(--ink-3); font-size: .82rem; margin-top: 3px; font-weight: 400; max-width: 60ch; }
+.tasks .tag {
+  display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 99px; vertical-align: 2px;
+  font-size: .66rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; line-height: 1.5;
+}
+.tag.moet { background: var(--ink); color: #fff; }
+.tag.wil { background: var(--green-soft); color: var(--green); }
+.tag.nice { border: 1px solid var(--line); color: var(--ink-3); }
+.tasks .muted { color: var(--ink-3); }
+/* Totaalregels: een band onder elke kamer, en dezelfde twee regels als voet voor het hele huis. */
+.tasks tr.sum th, .tasks tr.sum td { border-top: 0; padding: 6px 12px 6px 0; font-weight: 600; font-size: .9rem; }
+.tasks tr.sum.first th, .tasks tr.sum.first td { padding-top: 12px; }
+.tasks tr.sum:not(.first) th, .tasks tr.sum:not(.first) td { padding-bottom: 12px; }
+.tasks tr.sum th small { display: block; font-weight: 400; color: var(--ink-3); font-size: .78rem; margin-top: 1px; }
+.tasks tr.sum td small { font-weight: 400; }
+.tasks tbody tr.sum th, .tasks tbody tr.sum td { background: var(--paper); }
+.tasks tbody tr.sum.first th, .tasks tbody tr.sum.first td { border-top: 1px solid var(--line); }
+.tasks tbody tr.sum th { padding-left: 12px; }
+.tasks tbody tr.sum td:last-child { padding-right: 12px; }
+.tasks tfoot tr.sum.first th, .tasks tfoot tr.sum.first td { border-top: 2px solid var(--ink); padding-top: 16px; }
+.tasks tfoot tr.sum th { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; }
+.tasks tfoot tr.sum th small { font-family: var(--sans); }
+.list-legend { margin-top: 14px; font-size: .86rem; color: var(--ink-3); max-width: 84ch; }
+.list-legend b { color: var(--ink-2); }
 
 /* ── Speelveld ────────────────────────────────────────── */
 .field-grid { display: grid; grid-template-columns: minmax(0, 460px) 1fr; gap: 24px; align-items: start; margin-bottom: 18px; }
@@ -203,14 +236,28 @@ a { color: inherit; }
 .stats dd { margin: 3px 0 0; font-family: var(--serif); font-size: 1.28rem; font-weight: 500; line-height: 1.15; }
 .stats small { display: block; font-family: var(--sans); font-size: .78rem; color: var(--ink-3); margin-top: 3px; }
 
+.plan-head { display: flex; justify-content: space-between; align-items: center; gap: 12px 18px; flex-wrap: wrap; margin-top: 26px; }
+.zone .plan-head h4 { margin: 0; }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
 .plan { list-style: none; padding: 0; margin: 10px 0 0; }
 .plan li {
-  display: grid; grid-template-columns: 108px 1fr; gap: 12px;
+  display: grid; grid-template-columns: 150px 1fr; gap: 12px; align-items: start;
   padding: 11px 0; border-top: 1px solid var(--line); font-size: .95rem;
 }
 .plan li:last-child { border-bottom: 1px solid var(--line); }
-.plan b { font-weight: 600; }
-.plan span { color: var(--ink-2); }
+.plan b { font-weight: 600; padding-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 99px;
+  border: 1px solid transparent; font-size: .8rem; line-height: 1.25; font-weight: 500;
+  transition: background .25s, color .25s, border-color .25s, opacity .25s;
+}
+.chip i { font-style: normal; font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; opacity: .85; }
+.chip.doen.zelf { background: var(--green-soft); color: var(--green); }
+.chip.doen.vakman { background: var(--sand-soft); color: #6d5a2e; }
+.chip.later { color: var(--ink-3); border-color: var(--line); }
+.chip.niet { color: var(--ink-3); text-decoration: line-through; opacity: .55; }
+.tally { margin-top: 14px; font-size: .88rem; color: var(--ink-2); }
 
 .note {
   margin-top: 20px; padding: 12px 16px; background: var(--paper);
@@ -222,21 +269,42 @@ a { color: inherit; }
 @media (max-width: 900px) {
   .field-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
-  .rooms-grid { grid-template-columns: 1fr; }
   .wishes { grid-template-columns: repeat(2, 1fr); }
   .wish:last-child { grid-column: span 2; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 640px) {
+  /* De tabel stapelt: klus op een rij, zelf en laten doen eronder naast elkaar. */
+  .tasks, .tasks tbody, .tasks tfoot { display: block; }
+  .tasks thead { display: none; }
+  .tasks tr { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+  .tasks tr.room th, .tasks td:first-child, .tasks tr.sum th { grid-column: 1 / -1; }
+  .tasks td:first-child, .tasks tr.sum th { padding-bottom: 4px; }
+  .tasks td:nth-child(2), .tasks td:nth-child(3) { border-top: 0; padding-top: 0; white-space: normal; width: auto; }
+  .tasks td:nth-child(2)::before { content: "zelf"; }
+  .tasks td:nth-child(3)::before { content: "laten doen"; }
+  .tasks tr.sum td:nth-child(2)::before { content: "dagen"; }
+  .tasks tr.sum td:nth-child(3)::before { content: "budget"; }
+  .tasks td:nth-child(2)::before, .tasks td:nth-child(3)::before {
+    display: block; font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 600;
+  }
+  .tasks tr.sum { column-gap: 0; }
+  .tasks tr.sum td { padding-top: 0; padding-bottom: 10px; }
+  .tasks tr.sum.first td, .tasks tfoot tr.sum.first td { border-top: 0; }
+  .tasks tbody tr.sum td:nth-child(2) { padding-left: 12px; }
+  .list { padding: 6px 18px 10px; }
+}
 @media (max-width: 480px) {
   .wishes { grid-template-columns: 1fr; }
   .wish:last-child { grid-column: auto; }
-  .plan li { grid-template-columns: 1fr; gap: 2px; }
-  .zone, .fit, .square, .fact, .room-group { padding: 20px; }
+  .plan li { grid-template-columns: 1fr; gap: 6px; }
+  .plan b { padding-top: 0; }
+  .zone, .fit, .square, .fact { padding: 20px; }
   .corner { font-size: .8rem; }
   .zone-label { font-size: .62rem; width: 26%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .fit .bar i, .pin, .field polygon, .zone-label { transition: none; }
+  .fit .bar i, .pin, .field polygon, .zone-label, .chip { transition: none; }
   .field.nudge .pin, .zone.swap > * { animation: none; }
 }
